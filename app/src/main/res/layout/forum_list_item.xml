@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="kz.mircella.blogapplication.forum.ForumItemViewModel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/forum_list_fragment_cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="@dimen/ten_dp_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/forum_fragment_item_cv_heading_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five_dp_margin"
+                android:text="@string/heading"
+                android:textAlignment="center"
+                android:textSize="@dimen/title_size"
+                android:onClick="@{()->viewModel.onForumItemClick()}"
+                app:mutableText="@{viewModel.getTopicTitle()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/forum_fragment_item_cv_author_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/five_dp_margin"
+                android:layout_marginRight="@dimen/five_dp_margin"
+                android:layout_marginBottom="@dimen/five_dp_margin"
+                android:text="@string/author_id"
+                android:textSize="@dimen/subtitle_size"
+                app:mutableText="@{viewModel.getLastPostAuthor()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/forum_fragment_item_cv_date_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forum_fragment_item_cv_heading_tv"
+                app:layout_constraintHorizontal_weight="2"/>
+
+            <TextView
+                android:id="@+id/forum_fragment_item_cv_date_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/five_dp_margin"
+                android:layout_marginRight="@dimen/five_dp_margin"
+                android:layout_marginBottom="@dimen/five_dp_margin"
+                android:text="@string/date"
+                android:textSize="@dimen/subtitle_size"
+                app:mutableText="@{viewModel.getLastPostDate()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/forum_fragment_item_cv_author_tv"
+                app:layout_constraintTop_toBottomOf="@+id/forum_fragment_item_cv_heading_tv"
+                app:layout_constraintHorizontal_weight="1"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

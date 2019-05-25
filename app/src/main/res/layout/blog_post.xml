@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:indefinite_pager_indicator="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:orientation="vertical">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="kz.mircella.blogapplication.blogpost.BlogPostViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/blog_post_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/blog_post_title"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/blog_post_pager_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableText="@{viewModel.getTitle()}" />
+
+        <com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator
+            android:id="@+id/blog_post_pager_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/pager_indicator_margin"
+            app:layout_constraintBottom_toTopOf="@id/blog_post_rtl_view_pager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/blog_post_title"
+            indefinite_pager_indicator:dotColor="@color/colorPrimaryDark"
+            indefinite_pager_indicator:fadingDotCount="1"
+            indefinite_pager_indicator:selectedDotColor="@color/colorPrimary" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/blog_post_rtl_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/pager_indicator_margin"
+            app:layout_constraintBottom_toTopOf="@id/navigation_buttons"
+            app:layout_constraintDimensionRatio="H,2:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/blog_post_pager_indicator"
+            app:viewPagerAdapter="@{viewModel.getViewPagerAdapter()}"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/navigation_buttons"
+            style="?attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_background"
+            app:layout_constraintBottom_toTopOf="@id/blog_post_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/blog_post_rtl_view_pager">
+
+            <Button
+                android:id="@+id/viewpager_previous_button"
+                style="@style/PrimaryFlatButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/previous"
+                android:onClick="@{()->viewModel.onPreviousClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/viewpager_next_button"
+                style="@style/PrimaryFlatButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:onClick="@{()->viewModel.onNextClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/blog_post_content"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="@string/content_of_blogpost"
+            android:ems="10"
+            android:editable="false"
+            android:singleLine="false"
+            android:gravity="start|top"
+            android:inputType="none"
+            android:textIsSelectable="false"
+            android:labelFor="@id/blog_post_title"
+            android:text="@string/blog_post_content"
+            android:textSize="@dimen/text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navigation_buttons"
+            app:mutableText="@{viewModel.getContent()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

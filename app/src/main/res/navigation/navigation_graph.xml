@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="kz.mircella.blogapplication.ui.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_blogPostFragment"
+            app:destination="@id/blogPostFragment" />
+        <action
+            android:id="@+id/action_to_forumFragment"
+            app:destination="@id/forumFragment" />
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forumFragment"
+        android:name="kz.mircella.blogapplication.ui.ForumFragment"
+        android:label="ForumFragment">
+        <action
+            android:id="@+id/action_forumFragment_to_forumTopicFragment"
+            app:destination="@id/forumTopicFragment" />
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_videoFragment"
+            app:destination="@id/videoFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_forumFragment"
+            app:destination="@id/forumFragment"
+            app:popUpTo="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/forumTopicFragment"
+        android:name="kz.mircella.blogapplication.ui.forum.ForumTopicFragment"
+        android:label="ForumTopicFragment">
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/forumFragment"/>
+        <action
+            android:id="@+id/action_to_videoFragment"
+            app:destination="@id/videoFragment"
+            app:popUpTo="@id/forumFragment"/>
+        <action
+            android:id="@+id/action_to_forumFragment"
+            app:destination="@id/forumFragment"
+            app:popUpTo="@id/forumFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/blogPostFragment"
+        android:name="kz.mircella.blogapplication.ui.blogpost.BlogPostFragment"
+        android:label="BlogPostFragment">
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_videoFragment"
+            app:destination="@id/videoFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_forumFragment"
+            app:destination="@id/forumFragment"
+            app:popUpTo="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="kz.mircella.blogapplication.ui.VideoFragment"
+        android:label="VideoFragment">
+        <action
+            android:id="@+id/action_videoFgragment_to_videoItemFragment"
+            app:destination="@id/videoItemFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_forumFragment"
+            app:destination="@id/forumFragment"
+            app:popUpTo="@id/homeFragment"/>
+        <action
+            android:id="@+id/action_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoItemFragment"
+        android:name="kz.mircella.blogapplication.ui.video.VideoItemFragment"
+        android:label="VideoItemFragment">
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/videoFragment"/>
+        <action
+            android:id="@+id/action_to_forumFragment"
+            app:destination="@id/forumFragment"
+            app:popUpTo="@id/videoFragment"/>
+        <action
+            android:id="@+id/action_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
+</navigation>
