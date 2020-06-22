@@ -101,7 +101,8 @@ fun setVideoUri(view: VideoPlayView, videoUri: MutableLiveData<String>?){
     val parentActivity = view.getParentActivity()
     if (parentActivity != null && videoUri != null) {
         videoUri.observe(parentActivity, Observer { value ->
-            view.videoUrl = value
+            val a = parentActivity.resources.getIdentifier(value.substring(0, value.length - 4), "raw", parentActivity.packageName)
+            view.videoUrl = "android.resource://${parentActivity.packageName}/$a"
         })
     }
 }

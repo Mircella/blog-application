@@ -69,12 +69,12 @@ class VideoViewModel : BaseViewModel() {
     }
 
     private fun onRetrieveVideoListError(error: Throwable) {
-        Timber.d("RetrieveBlogPostListError: ${error.localizedMessage}")
+        Timber.d("RetrieveVideoListError: ${error.localizedMessage}")
         errorMessage.value = R.string.data_loading_error
     }
 
     private fun onRetrieveVideoListSuccess(body: ResponseBody) {
-        Timber.d("RetrieveBlogPostListSuccess")
+        Timber.d("RetrieveVideoListSuccess")
         loadingVideoList.value = "Retrieved BlogPostList"
         val result = convertToBlogPostDtoList(body.byteStream())
         videoListAdapter.updateVideoList(convertToVideoItems(result))

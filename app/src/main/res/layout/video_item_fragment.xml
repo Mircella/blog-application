@@ -13,17 +13,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.marcinmoskala.videoplayview.VideoPlayView
             android:id="@+id/video_item_video_player"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:videoUri="@{viewModel.getVideoUrl()}"
-            app:videoImageUrl="@{viewModel.getVideoImageUrl()}"
-            app:playButton="@drawable/play_button"
             app:layout_constraintBottom_toTopOf="@id/video_item_title"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:playButton="@drawable/play_button"
+            app:videoImageUrl="@{viewModel.getVideoImageUrl()}"
+            app:videoUri="@{viewModel.getVideoUrl()}" />
+
         <TextView
             android:id="@+id/video_item_title"
             android:layout_width="match_parent"

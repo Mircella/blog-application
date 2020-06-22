@@ -50,32 +50,32 @@ class VideoItemViewModel(private val videoItemTitle: String): BaseViewModel() {
                 )
     }
 
-    public fun getTitle(): MutableLiveData<String> {
+    fun getTitle(): MutableLiveData<String> {
         return title
     }
 
-    public fun getAuthorId(): MutableLiveData<String> {
+    fun getAuthorId(): MutableLiveData<String> {
         return authorId
     }
 
-    public fun getDate(): MutableLiveData<String> {
+    fun getDate(): MutableLiveData<String> {
         return videoDate
     }
 
-    public fun getDescription(): MutableLiveData<String> {
+    fun getDescription(): MutableLiveData<String> {
         return description
     }
 
-    public fun getVideoUrl(): MutableLiveData<String> {
+    fun getVideoUrl(): MutableLiveData<String> {
         return videoUrl
     }
 
-    public fun getVideoImageUrl(): MutableLiveData<String> {
+    fun getVideoImageUrl(): MutableLiveData<String> {
         return videoImageUrl
     }
 
     private fun onRetrieveVideoDetailsError(error: Throwable) {
-        Timber.d("RetrieveBlogPostListError: ${error.localizedMessage}")
+        Timber.d("RetrieveVideoDetailsError: ${error.localizedMessage}")
         errorMessage.value = R.string.data_loading_error
     }
 
